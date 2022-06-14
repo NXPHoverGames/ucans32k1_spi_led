@@ -22,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "ucans32k1_spi_led = ucans32k1_spi_led.ucans32k1_spi_led:main"
+            'ucans32k1_spi_led_node = ucans32k1_spi_led.ucans32k1_spi_led_node:main'
         ],
     },
 )

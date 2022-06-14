@@ -28,7 +28,7 @@ class UCANS32K1SPILEDNode(Node):
 
     def __init__(self):
 
-        super().__init__("ucans32k1_spi_led")
+        super().__init__("ucans32k1_spi_led_node")
 
         image_topic_descriptor = ParameterDescriptor(
             type=ParameterType.PARAMETER_STRING,
@@ -84,7 +84,7 @@ class UCANS32K1SPILEDNode(Node):
 
         self.pubMaxHz=500
 
-        self.resourcePath = os.path.realpath(os.path.relpath(os.path.join(os.path.realpath(__file__).replace("ucans32k1_spi_led.py",""),"../resources")))
+        self.resourcePath = os.path.realpath(os.path.relpath(os.path.join(os.path.realpath(__file__).replace("ucans32k1_spi_led_node.py",""),"../resources")))
 
 
         self.BackwardYellowImg=cv2.imread(os.path.join(self.resourcePath,'YellowDirection.png'), cv2.IMREAD_COLOR)
@@ -252,3 +252,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
