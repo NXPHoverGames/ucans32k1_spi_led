@@ -116,6 +116,8 @@ class UCANS32K1SPILEDNode(Node):
 
         self.UltraLowPowerImg=cv2.imread(os.path.join(self.extraPath,'UltraLowPower.png'), cv2.IMREAD_COLOR)
 
+        self.PersonImg=cv2.imread(os.path.join(self.extraPath,'Person.png'), cv2.IMREAD_COLOR)
+
         self.WhiteImg=cv2.imread(os.path.join(self.extraPath,'White.png'), cv2.IMREAD_COLOR)
 
 
@@ -187,6 +189,8 @@ class UCANS32K1SPILEDNode(Node):
                     self.BGR2RGBHex(self.XImg)
                 elif patternString.data.upper() == "P":
                     self.BGR2RGBHex(self.PImg)
+                elif patternString.data.upper() == "PERSON":
+                    self.BGR2RGBHex(self.PersonImg)
         return
 
 
