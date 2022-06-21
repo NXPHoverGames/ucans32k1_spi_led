@@ -84,7 +84,7 @@ class UCANS32K1SPILEDNode(Node):
 
         self.pubMaxHz=500
 
-        self.AllowRepeats = True
+        self.AllowRepeats = False
 
         self.extraPath = os.path.realpath(os.path.relpath(os.path.join(os.path.realpath(__file__).replace("ucans32k1_spi_led_node.py",""),"../extras")))
 
