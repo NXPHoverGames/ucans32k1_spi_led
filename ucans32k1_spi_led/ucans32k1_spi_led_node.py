@@ -84,6 +84,8 @@ class UCANS32K1SPILEDNode(Node):
 
         self.pubMaxHz=500
 
+        self.AllowRepeats = True
+
         self.extraPath = os.path.realpath(os.path.relpath(os.path.join(os.path.realpath(__file__).replace("ucans32k1_spi_led_node.py",""),"../extras")))
 
 
@@ -151,7 +153,7 @@ class UCANS32K1SPILEDNode(Node):
 
 
     def patternMatch(self, patternString):
-        if patternString.data.upper() !=  self.previousPattern.upper():
+        if patternString.data.upper() !=  self.previousPattern.upper() or self.AllowRepeats:
             if self.maxLEDs >= 64:
                 if patternString.data.upper() == "WHITE":
                     self.BGR2RGBHex(self.WhiteImg)
@@ -201,7 +203,7 @@ class UCANS32K1SPILEDNode(Node):
             for x in range(image.shape[1]):
                 RGBHex=np.append(RGBHex, np.uint32((image[y][image.shape[1]-x-1][0] << 16) + (image[y][image.shape[1]-x-1][1] << 8) + image[y][image.shape[1]-x-1][2]))
         
-        if not np.array_equal(self.previousRGBHex,RGBHex):
+        if not np.array_equal(self.previousRGBHex,RGBHex) or self.AllowRepeats:
             self.previousRGBHex=RGBHex
             NumberLeds = len(RGBHex)
             NumberGroups = int(np.ceil(NumberLeds/10.0))
