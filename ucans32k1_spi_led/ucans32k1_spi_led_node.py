@@ -122,7 +122,7 @@ class UCANS32K1SPILEDNode(Node):
 
         self.WhiteImg=cv2.imread(os.path.join(self.extraPath,'White.png'), cv2.IMREAD_COLOR)
 
-
+        self.OffImg=np.zeros((8,8,3), dtype=np.uint8)
 
         #setup CvBridge
         self.bridge = CvBridge()
@@ -193,6 +193,8 @@ class UCANS32K1SPILEDNode(Node):
                     self.BGR2RGBHex(self.PImg)
                 elif patternString.data.upper() == "PERSON":
                     self.BGR2RGBHex(self.PersonImg)
+                elif patternString.data.upper() == "OFF":
+                    self.BGR2RGBHex(self.OffImg)
         return
 
 
