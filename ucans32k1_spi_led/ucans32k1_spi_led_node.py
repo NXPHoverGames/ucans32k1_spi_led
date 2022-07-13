@@ -84,7 +84,7 @@ class UCANS32K1SPILEDNode(Node):
 
         self.pubMaxHz=500
 
-        self.AllowRepeats = False
+        self.AllowRepeats = True
 
         self.extraPath = os.path.realpath(os.path.relpath(os.path.join(os.path.realpath(__file__).replace("ucans32k1_spi_led_node.py",""),"../extras")))
 
@@ -234,10 +234,7 @@ class UCANS32K1SPILEDNode(Node):
                     axis=0)
         if len(LedValArray) <= 10:
             for Led in range(len(LedValArray)):
-                if OffsetGroup == 0 and Led == 0:
-                    useBrightness = 0x80
-                else:
-                    useBrightness = (Brightness & 0x1F) + 0xE0
+                useBrightness = (Brightness & 0x1F) + 0xE0
                 DataArray = np.append(DataArray, [
                             np.uint8((LedValArray[Led] >> 16) & 0xFF), #RED
                             np.uint8((LedValArray[Led] >> 8) & 0xFF), #GREEN
